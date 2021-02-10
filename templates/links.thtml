@@ -1,0 +1,75 @@
+{# begin {templatelocation} #}
+<div class="uk-grid uk-grid-width-1-2">
+    <div>
+        <h1>{title}</h1>
+    </div>
+{!if lang_addalink}
+    <div class="uk-text-center">
+        <a class="uk-button uk-button-success" href="{pi_url}/index.php?mode=submit&cid={cid_encoded}">{lang_addalink}</a>
+    </div>
+{!endif}
+</div>
+<form class="uk-form" action="{pi_url}/index.php" method="get">
+    <input type="hidden" name="mode" value="links" />
+    <div class="uk-panel uk-panel-box uk-panel-box-primary uk-margin">
+        <div class="uk-grid uk-margin">
+            <div class="uk-width-medium-1-2">
+                {breadcrumbs}
+            </div>
+            <div class="uk-width-medium-1-2 uk-text-right">
+            <select name="cid" onchange="javascript:submit()">{link_dropdown}</select>
+                <button class="uk-button" type="submit" value="links" name="nothing">{lang_go}</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+{category_dropdown}
+{!if lang_categories}
+<h3 class="uk-h3">{lang_categories}</h3>
+<div class="uk-grid uk-margin uk-grid-width-1-1 uk-grid-width-medium-1-{link_cols}">
+<!-- BEGIN category_navigation -->
+    <div style="margin-bottom:10px;">
+        <a href="{category_link}">{category_name}</a>
+{!if category_count}
+        ({category_count})
+{!endif}
+        <div class="uk-panel">
+            {category_description}
+        </div>
+        {category_row}
+    </div>
+<!-- END category_navigation -->
+</div>
+{!endif}
+
+<h2 class="uk-h2">{link_category}</h2>
+<ul class="uk-list">
+<!-- BEGIN link_details -->
+    <li class="uk-margin">
+        <span class="uk-text-bold">{link_html}</span> ({link_hits})
+{!if edit_icon}
+        <a href="{edit_url}"><i class="uk-icon-edit"></i></a>
+{!endif}
+        {link_broken}
+        <div class="uk-panel">
+            {link_description}
+        </div>
+    </li>
+<!-- END link_details -->
+</ul>
+{category_links}
+
+{!if nolinks}
+    <div class="uk-alert uk-alert-warning">
+        {$LANG_LINKS['no_links']}
+    </div>
+{!endif}
+
+{!if social_share}
+    <div class="uk-container uk-container-center">
+        {social_share}
+    </div>
+{!endif}
+{page_navigation}
+{# end {templatelocation} #}

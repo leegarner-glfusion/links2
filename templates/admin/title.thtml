@@ -1,0 +1,14 @@
+{# begin {templatelocation} #}
+<div style="float:left;margin-right:10px;">
+    <img src="{icon}" />
+</div>
+<div style="float:left;">
+{!if title}
+    <h2 style="float:left">{title}</h2>
+{!endif}
+{!if subtitle}
+    <h2 style="float:right">{subtitle}</h2>
+{!endif}
+</div>
+<div style="margin-top: 10px;clear:both;"></div>
+{# end {templatelocation} #}
